@@ -24,6 +24,7 @@ public class AppStore {
 			System.out.println("Idade: " + utilizador.getIdade());
 			System.out.println("Nº: " + utilizador.getNum_unico());
 		}
+		System.out.println("\n");
 	}
 	
 	public void realizarCompra(Compra compra) {
@@ -36,9 +37,12 @@ public class AppStore {
 			aplicacao.getProgramador().getAvaliacoes().add(avaliacao);
 			System.out.println(aplicacao.getNome());
 			System.out.println(aplicacao.getProgramador());
-			System.out.println("Avaliação da aplicação:" +aplicacao.mediaAvaliacoes());
-			System.out.println("Avaliação do programador:" + aplicacao.getProgramador().mediaAvaliacoesProgramador());
+			aplicacao.getProgramador().setAvaliacao(aplicacao.getProgramador().mediaAvaliacoesProgramador());
+			aplicacao.setAvaliacao(aplicacao.mediaAvaliacoes());
+			System.out.println("Avaliação da aplicação:" + aplicacao.getAvaliacao());
+			System.out.println("Avaliação do programador:" + aplicacao.getProgramador().getAvaliacao());
 		}
+		System.out.println("\n");
 	}
 
 	public void listagemSeletiva() {
@@ -50,40 +54,97 @@ public class AppStore {
 		List<Aplicacao> utilities = new ArrayList<Aplicacao>();
 		List<Aplicacao> travel = new ArrayList<Aplicacao>();
 		List<Aplicacao> healthandfitness = new ArrayList<Aplicacao>();
+		
 		for(Aplicacao aplicacao: aplicacoes) {
 			if(aplicacao.getTipo().equals(TipoAplicacao.Games)) {
 				games.add(aplicacao);
-				System.out.println(games);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.Business)) {
 				business.add(aplicacao);
-				System.out.println(business);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.Education)) {
 				education.add(aplicacao);
-				System.out.println(education);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.Lifestyle)) {
 				lifestyle.add(aplicacao);
-				System.out.println(lifestyle);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.Entertainment)) {
 				entertainment.add(aplicacao);
-				System.out.println(entertainment);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.Utilities)) {
 				utilities.add(aplicacao);
-				System.out.println(utilities);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.Travel)) {
 				travel.add(aplicacao);
-				System.out.println(travel);
 			}
 			if(aplicacao.getTipo().equals(TipoAplicacao.HealthAndFitness)) {
 				healthandfitness.add(aplicacao);
-				System.out.println(healthandfitness);
 			}
 		}
+		
+		List<Aplicacao> nota1 = new ArrayList<Aplicacao>();
+		List<Aplicacao> nota2 = new ArrayList<Aplicacao>();
+		List<Aplicacao> nota3 = new ArrayList<Aplicacao>();
+		List<Aplicacao> nota4 = new ArrayList<Aplicacao>();
+		List<Aplicacao> nota5 = new ArrayList<Aplicacao>();
+		
+		for(Aplicacao aplicacao: aplicacoes) {
+			if(aplicacao.getAvaliacao() == 1) {
+				nota1.add(aplicacao);
+			}
+			if(aplicacao.getAvaliacao() == 2) {
+				nota2.add(aplicacao);
+			}
+			if(aplicacao.getAvaliacao() == 3) {
+				nota3.add(aplicacao);
+			}
+			if(aplicacao.getAvaliacao() == 4) {
+				nota4.add(aplicacao);
+			}
+			if(aplicacao.getAvaliacao() == 5) {
+				nota5.add(aplicacao);
+			}
+		}
+		
+		System.out.println("Aplicações por categoria:");
+		System.out.println("Games: " + games);
+		System.out.println("Business: " + business);
+		System.out.println("Education: " + education);
+		System.out.println("Lifestyle: " + lifestyle);
+		System.out.println("Entertainment: " + entertainment);
+		System.out.println("Utilities: " + utilities);
+		System.out.println("Travel: " + travel);
+		System.out.println("Health & Fitness: " + healthandfitness);
+		
+		System.out.println("\n");
+		
+		System.out.println("Aplicações por classificação dos utilizadores:");
+		System.out.println("Aplicações com nota 1: " + nota1);
+		System.out.println("Aplicações com nota 2: " + nota2);
+		System.out.println("Aplicações com nota 3: " + nota3);
+		System.out.println("Aplicações com nota 4: " + nota4);
+		System.out.println("Aplicações com nota 5: " + nota5);
+	}
+	
+	public void listagemOrdenada() {
+		List<Aplicacao> classificacao = new ArrayList<Aplicacao>();
+		
+		for(Aplicacao aplicacao: aplicacoes) {
+			for(int i = 0; i < aplicacoes.size(); i++) {
+				for(int j = i + 1; j < aplicacoes.size(); j++) {
+					Aplicacao aplicacao1 = aplicacoes.get(i);
+					Aplicacao aplicacao2 = aplicacoes.get(j);
+					
+					if(aplicacao1.getAvaliacao() > aplicacao2.getAvaliacao()) {
+						classificacao.add(aplicacao);
+						System.out.println(aplicacao);
+						System.out.println(aplicacao.getAvaliacao());
+					}
+				}
+			}
+		}
+		System.out.println("Aplicações ordenadas por ordem de classificação: " + classificacao);
+		
 	}
 }
 

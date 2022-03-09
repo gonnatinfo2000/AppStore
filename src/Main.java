@@ -60,10 +60,6 @@ public class Main {
 			app.realizarCompra(compra2);
 			app.realizarCompra(compra3);
 			
-			// System.out.println(compra2.getCliente());
-			// System.out.println(compra2.getAplicacoes());
-			// System.out.println(compra2.getPreco());
-			
 			Avaliacao avaliacao1 = new Avaliacao((Cliente) cliente1, 4, "Esta aplicação é fixe.");
 			Avaliacao avaliacao2 = new Avaliacao((Cliente) cliente2, 4, "Uma aplicação decente.");
 			Avaliacao avaliacao3 = new Avaliacao((Cliente) cliente2, 5, "Ótimo para viajar.");
@@ -79,6 +75,14 @@ public class Main {
 			app.atribuirAvaliacao(compra3, avaliacao6, aplicacao3);
 		
 			app.listagemSeletiva();
+			
+			app.listagemOrdenada();
+			
+			// System.out.println(compra2.getCliente());
+			// System.out.println(compra2.getAplicacoes());
+			// System.out.println(compra2.getPreco());
+			// System.out.println(aplicacao1.getAvaliacao());
+			// System.out.println(((Programador) programador1).getAvaliacao());
 		}
 		
 }
