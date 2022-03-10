@@ -1,6 +1,8 @@
 import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Aplicacao {
@@ -83,4 +85,7 @@ public class Aplicacao {
 		return media;
 	}
 
+	public boolean compareTo(Aplicacao aplicacao1, Aplicacao aplicacao2)  {
+		return aplicacao1.getAvaliacao() > aplicacao2.getAvaliacao();
+	}
 }

@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class AppStore {
@@ -127,25 +128,46 @@ public class AppStore {
 	}
 	
 	public void listagemOrdenada() {
-		List<Aplicacao> classificacao = new ArrayList<Aplicacao>();
+		List<String> classificacao = new ArrayList<String>();
+		
+		int i = 0;
 		
 		for(Aplicacao aplicacao: aplicacoes) {
-			for(int i = 0; i < aplicacoes.size(); i++) {
-				for(int j = i + 1; j < aplicacoes.size(); j++) {
-					Aplicacao aplicacao1 = aplicacoes.get(i);
-					Aplicacao aplicacao2 = aplicacoes.get(j);
-					
-					if(aplicacao1.getAvaliacao() > aplicacao2.getAvaliacao()) {
-						classificacao.add(aplicacao);
-						System.out.println(aplicacao);
-						System.out.println(aplicacao.getAvaliacao());
-					}
+				Aplicacao aplicacao1 = aplicacoes.get(i);
+				Aplicacao aplicacao2 = aplicacoes.get(aplicacoes.size()-1);
+				if(aplicacao.compareTo(aplicacao1, aplicacao2)) {
+					classificacao.add(aplicacao.getNome());
+					System.out.println(aplicacao.getNome());
+					System.out.println(aplicacao.getAvaliacao());
+				}else{
+					classificacao.add(aplicacao.getNome());
+					System.out.println(aplicacao.getNome());
+					System.out.println(aplicacao.getAvaliacao());
+				}
+				i++;
+			}
+		
+		Collections.sort(classificacao);
+		System.out.println("Aplicações ordenadas por ordem de nome: " + classificacao);
+		
+		List<String> vendas = new ArrayList<String>();
+		
+		int numeroVendas = 0;
+		for(Compra compra: compras) {
+			for(Aplicacao aplicacao: aplicacoes) {
+				if(compra.getAplicacoes().contains(aplicacao)) {
+					vendas.add(aplicacao.getNome());
+					numeroVendas++;
 				}
 			}
 		}
-		System.out.println("Aplicações ordenadas por ordem de classificação: " + classificacao);
+		
+		Collections.sort(vendas);
+		System.out.println("Aplicações ordenadas por numero de vendas: " + vendas);
 		
 	}
+		
 }
+
 
 
